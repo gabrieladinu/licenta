@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "606424399484",
+    "firebase_url": "https://licenta-73791.firebaseio.com",
+    "project_id": "licenta-73791",
+    "storage_bucket": "licenta-73791.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606424399484:android:6d85be8f3a2b98de",
+        "android_client_info": {
+          "package_name": "com.example.gabri.licenta1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606424399484-nacb4uska7f0n5sui9tk9c72u63i6am5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gabri.licenta1",
+            "certificate_hash": "f13d7b4a3b58c679816383af54d41c0c314d9b96"
+          }
+        },
+        {
+          "client_id": "606424399484-f6083qnudhpk3dd78baj2b5bqm055jio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFiCknQ5_mL8p6unBiShP04xM8mxY0IJ8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606424399484-f6083qnudhpk3dd78baj2b5bqm055jio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+
+    <TextView
+        android:id="@+id/titleChoise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome boss! make a choise ...."
+        android:textAlignment="center"
+        android:layout_weight="0"/>
+
+    <Button
+        android:id="@+id/newEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/newEntry"
+        />
+
+    <Button
+        android:id="@+id/checkEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/checkEntry"
+
+     />
+
+
+
+    <Button
+        android:id="@+id/reports"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Report"
+
+        />
+
+</LinearLayout>

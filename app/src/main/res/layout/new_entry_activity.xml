@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+   >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/step1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Step 1  "
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/outerSpace"/>
+
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Scan BarCode / QrCode "
+        android:textColor="@color/outerSpace"
+        android:textSize="20dp"
+        android:layout_marginBottom="30dp"
+       />
+
+
+
+    <Button
+        android:id="@+id/barcodescan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/newEntryScann" />
+
+    <TextView
+        android:id="@+id/barcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newEntryScann"
+        android:hint="Barcode"
+        android:text=" "
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
+        android:id="@+id/nobarcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barcode"
+        android:hint="Barcode"
+        android:text=" "
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/firstname"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:visibility="invisible"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text=""
+        android:hint="First Name "/>
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:visibility="invisible"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text=""
+        android:hint="Last Name "/>
+
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:visibility="invisible"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Phone"/>
+
+    <EditText
+        android:id="@+id/mail"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:visibility="invisible"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text=""
+        android:hint="Mail"/>
+</LinearLayout>
+
+
+
+
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Next"
+        android:enabled="false"/>
+
+</RelativeLayout>
