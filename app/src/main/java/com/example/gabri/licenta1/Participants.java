@@ -15,13 +15,14 @@ public class Participants {
     private String checkOut;
     private String details;
     private String firstName;
-    private String idImage;
     private String lastName;
     private String mail;
     private String numberChekIn;
     private String register;
     private String sex;
     private String phone ;
+    private String qrCodegenerated ;
+
 
     public String getPhone() {
         return phone;
@@ -33,21 +34,27 @@ public class Participants {
 
     public Participants() {}
 
-    public Participants(String age, String barCode, String checkIn, String checkOut, String details, String firstName, String idImage, String lastName, String mail, String numberChekIn, String register, String sex, String phone) {
+    public Participants(String age, String barCode, String checkIn, String checkOut, String details, String firstName, String lastName, String mail, String numberChekIn, String register, String sex, String phone , String qrCodegenerated) {
         this.age = age;
         this.barCode = barCode;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.details = details;
         this.firstName = firstName;
-        this.idImage = idImage;
         this.lastName = lastName;
         this.mail = mail;
         this.numberChekIn = numberChekIn;
         this.register = register;
         this.sex = sex;
+        this.qrCodegenerated =qrCodegenerated ;
 
     }
+
+    public String getqrCodegenerated() {
+        return qrCodegenerated;
+    }
+
+    public void setqrCodegenerated(String qrCodegenerated) { this.qrCodegenerated = qrCodegenerated;  }
 
     public String getAge() {
         return age;
@@ -95,14 +102,6 @@ public class Participants {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getIdImage() {
-        return idImage;
-    }
-
-    public void setIdImage(String idImage) {
-        this.idImage = idImage;
     }
 
     public String getLastName() {
@@ -154,13 +153,13 @@ public class Participants {
                 ", checkOut='" + checkOut + '\'' +
                 ", details='" + details + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", idImage='" + idImage + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", mail='" + mail + '\'' +
                 ", numberChekIn='" + numberChekIn + '\'' +
                 ", register='" + register + '\'' +
                 ", sex='" + sex + '\'' +
                 ", phone='" + phone + '\'' +
+                " , qrCodegenerated " + qrCodegenerated + '\'' +
                 '}';
     }
 }

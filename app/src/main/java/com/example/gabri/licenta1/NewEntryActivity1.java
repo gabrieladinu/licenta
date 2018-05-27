@@ -354,6 +354,7 @@ clearinfo();
         myRef.child("sex").setValue(sex);
         myRef.child("age").setValue(varsta);
         myRef.child("register").setValue(timeStamp);
+        myRef.child("qrCodegenerated").setValue(qrCodegenerated);
 
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
