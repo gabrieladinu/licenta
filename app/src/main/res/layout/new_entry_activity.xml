@@ -117,6 +117,13 @@
         android:layout_marginRight="20dp"
         android:text=""
         android:hint="Mail"/>
+
+    <ImageView
+        android:id="@+id/QR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+         />
 </LinearLayout>
 
 

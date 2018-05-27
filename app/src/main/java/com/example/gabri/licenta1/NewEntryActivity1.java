@@ -66,6 +66,7 @@ public class NewEntryActivity1 extends AppCompatActivity {
     String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault()).format(new Date());
     String varsta;
     String key1;
+    String qrCodegenerated;
 
     FirebaseStorage storage;
     StorageReference storageReference;
@@ -242,7 +243,6 @@ clearinfo();
     void setinfo() {
         idImage.setImageBitmap(editedBitmap);
         resultid.setVisibility(View.GONE);
-
         resultid.setText("Image not found");
         sexid.setVisibility(View.VISIBLE);
         ageid.setVisibility(View.VISIBLE);
@@ -398,7 +398,9 @@ clearinfo();
 
         Intent intent = getIntent();
         key1 = intent.getStringExtra("key");
-        Log.d("key", key1);
+        qrCodegenerated = intent.getStringExtra("qrCodeGenerated") ;
+
+
         newIdScann.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

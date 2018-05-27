@@ -1,6 +1,7 @@
 package com.example.gabri.licenta1;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
@@ -18,6 +20,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 /**
  * Created by gabri on 1/7/2018.
@@ -32,9 +39,11 @@ public class NewEntryActivity extends AppCompatActivity {
     EditText lastname;
     EditText phone;
     EditText mail;
+    ImageView Qr;
 
     Participants participant;
     String key1 ;
+    String qrCodegenerate ;
     FirebaseDatabase database;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -71,7 +80,8 @@ public class NewEntryActivity extends AppCompatActivity {
                     Barcode barcode = data.getParcelableExtra("barcode");
                     barcodeinfo.setText("Barcode : " + barcode.displayValue);
                     String stringbarcode = barcode.displayValue.toString();
-                    read(stringbarcode);
+                    search(stringbarcode);
+
                 } else {
                     barcodeinfo.setText("BarCode not found!");
                     next.setEnabled(false);
@@ -81,7 +91,7 @@ public class NewEntryActivity extends AppCompatActivity {
         }
     }
 
-    void read(final String stringbarcode) {
+    void search(final String stringbarcode) {
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef = database.getReference("Participants/1");
 //    Participants pers = new Participants("","","","","","","","","","","","","");
@@ -98,6 +108,8 @@ public class NewEntryActivity extends AppCompatActivity {
                         Log.d ("key", "  "+  key1 );
                         Log.d("search", stringbarcode + "    Value is: " + participant);
                         setinfo() ;
+                        qrCodegenerate = "ky" + key1.toString() + "bc" + stringbarcode + "acc" ;
+                        generateQr(qrCodegenerate);
                     }
                 } else {
                     Log.d("ceva", "nu exista in baza de date ");
@@ -130,15 +142,29 @@ void updateinfo (){
     myRef.child("lastName").setValue(newlastname);
     myRef.child("firstName").setValue(newfirstname);
 
-
-
 }
+ void generateQr (String qrString){
+
+     String text=qrString ; // Whatever you need to encode in the QR code
+     MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+
+     try {
+         BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,200,200);
+         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+         Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+
+         Qr.setVisibility(View.VISIBLE);
+         Qr.setImageBitmap(bitmap);
+
+     } catch (WriterException e) {
+         e.printStackTrace();
+     }
+ }
 
 
     private void setViews() {
         TextView userEdit = (TextView) findViewById(R.id.step1);
         Button barcodescan = (Button) findViewById(R.id.barcodescan);
-
 
         barcodeinfo = (TextView) findViewById(R.id.barcode);
         nobarcodeinfo = (TextView) findViewById(R.id.nobarcode);
@@ -147,6 +173,9 @@ void updateinfo (){
         lastname = (EditText) findViewById(R.id.lastname);
         phone = (EditText) findViewById(R.id.phone);
         mail = (EditText) findViewById(R.id.mail);
+        Qr = (ImageView) findViewById(R.id.QR) ;
+
+
 
 
         barcodescan.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +192,7 @@ void updateinfo (){
                 updateinfo();
                 Intent intent = new Intent(getBaseContext(), NewEntryActivity1.class);
                 intent.putExtra("key", key1);
+                intent.putExtra("qrCodeGenerated" , qrCodegenerate);
                 startActivity(intent);
 
             }
@@ -170,6 +200,7 @@ void updateinfo (){
 
     }
     void setinfo (){
+
         next.setEnabled(true);
         firstname.setVisibility(View.VISIBLE);
         lastname.setVisibility(View.VISIBLE);
@@ -185,10 +216,12 @@ void updateinfo (){
         lastname.setVisibility(View.INVISIBLE);
         mail.setVisibility(View.INVISIBLE);
         phone.setVisibility(View.INVISIBLE);
+        Qr.setVisibility(View.INVISIBLE);
         firstname.setText("");
         lastname.setText("");
         mail.setText("");
         phone.setText("");
+       Qr.setImageBitmap(null);
 
     }
 
