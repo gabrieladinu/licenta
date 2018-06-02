@@ -293,7 +293,7 @@ clearinfo();
                     }
                     int bornyear = Integer.parseInt(cnp.substring(1, 3));
                     // sa nascut inainte de 2000 asica 19xx
-                    if (gen.equals('2') || gen.equals('1')) {
+                    if (gen.equals('6') || gen.equals('1')) {
                         bornyear = 1900 + bornyear;
                     }
                     if (gen.equals('5') || gen.equals('6')) {
