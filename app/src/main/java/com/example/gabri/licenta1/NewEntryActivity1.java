@@ -117,7 +117,9 @@ public class NewEntryActivity1 extends AppCompatActivity {
                 ".jpg",
                 storageDir
         );
+
         mCurrentPhotoPath = image.getAbsolutePath();
+        Log.d("calea" , mCurrentPhotoPath) ;
         return image;
     }
 

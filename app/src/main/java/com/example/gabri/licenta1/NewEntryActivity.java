@@ -2,8 +2,11 @@ package com.example.gabri.licenta1;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -24,7 +28,15 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.encoder.QRCode;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by gabri on 1/7/2018.
@@ -40,6 +52,8 @@ public class NewEntryActivity extends AppCompatActivity {
     EditText phone;
     EditText mail;
     ImageView Qr;
+    Bitmap QRCodeImg;
+    File sd ;
 
     Participants participant;
     String key1 ;
@@ -151,10 +165,38 @@ void updateinfo (){
      try {
          BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,200,200);
          BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-         Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+         QRCodeImg = barcodeEncoder.createBitmap(bitMatrix);
+
+
+         String filename = key1.toString();
+          sd = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+
+         File dest = new File(sd, filename);
+         Log.d("vietii", dest.toString()) ;
+
+         try {
+             FileOutputStream out = new FileOutputStream(dest);
+             QRCodeImg.compress(Bitmap.CompressFormat.JPEG, 90, out);
+             out.flush();
+             out.close();
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+
+//
+//         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+//         QRCodeImg.compress(Bitmap.CompressFormat.PNG, 90, storageDir);
+//
+//
+//        MediaStore.Images.Media.insertImage(getContentResolver(),QRCodeImg,key1.toString(),"");
+
+
+
+
 
          Qr.setVisibility(View.VISIBLE);
-         Qr.setImageBitmap(bitmap);
+         Qr.setImageBitmap(QRCodeImg);
 
      } catch (WriterException e) {
          e.printStackTrace();
@@ -190,6 +232,75 @@ void updateinfo (){
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 updateinfo();
+
+
+
+
+
+
+
+
+                new Thread(new Runnable() {
+
+                    public void run() {
+
+                        try {
+
+                            GMailSender sender = new GMailSender(
+
+                                    "send.repaly@gmail.com",
+
+                                    "licenta123");
+
+
+String path =  sd.getPath()+"/" +key1.toString();
+                      sender.addAttachment(path);
+                            Log.d("vietii", path.toString()) ;
+
+                            sender.sendMail("Test mail", "Cine e boss de bossss ?? Gabriela Dinu ",
+
+                                    "send.repaly@gmail.com",
+
+                                    "gabrieladnu@yahoo.com");
+                            Log.d("mail trimis " , "123456") ;
+
+
+
+
+
+
+
+
+
+                        } catch (Exception e) {
+
+                            Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_LONG).show();
+
+
+
+                        }
+
+                    }
+
+                }).start();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 Intent intent = new Intent(getBaseContext(), NewEntryActivity1.class);
                 intent.putExtra("key", key1);
                 intent.putExtra("qrCodeGenerated" , qrCodegenerate);
