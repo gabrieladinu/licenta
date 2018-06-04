@@ -53,11 +53,11 @@ public class NewEntryActivity extends AppCompatActivity {
     EditText mail;
     ImageView Qr;
     Bitmap QRCodeImg;
-    File sd ;
+    File sd;
 
     Participants participant;
-    String key1 ;
-    String qrCodegenerate ;
+    String key1;
+    String qrCodegenerate;
     FirebaseDatabase database;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -119,10 +119,10 @@ public class NewEntryActivity extends AppCompatActivity {
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         participant = postSnapshot.getValue(Participants.class);
                         key1 = postSnapshot.getKey();
-                        Log.d ("key", "  "+  key1 );
+                        Log.d("key", "  " + key1);
                         Log.d("search", stringbarcode + "    Value is: " + participant);
-                        setinfo() ;
-                        qrCodegenerate = "ky" + key1.toString() + "bc" + stringbarcode + "acc" ;
+                        setinfo();
+                        qrCodegenerate = "ky" + key1.toString() + "bc" + stringbarcode + "acc";
                         generateQr(qrCodegenerate);
                     }
                 } else {
@@ -142,47 +142,49 @@ public class NewEntryActivity extends AppCompatActivity {
         });
 
     }
-void updateinfo (){
 
-     String newfirstname  = firstname.getText().toString();
-    String newlastname  = lastname.getText().toString();
-    String newphone  = phone.getText().toString();
-    String newmail  = mail.getText().toString();
+    void updateinfo() {
 
-    database = FirebaseDatabase.getInstance();
-      DatabaseReference myRef = database.getReference("Participants/" + key1);
-      myRef.child("phone").setValue(newphone);
-    myRef.child("mail").setValue(newmail);
-    myRef.child("lastName").setValue(newlastname);
-    myRef.child("firstName").setValue(newfirstname);
+        String newfirstname = firstname.getText().toString();
+        String newlastname = lastname.getText().toString();
+        String newphone = phone.getText().toString();
+        String newmail = mail.getText().toString();
 
-}
- void generateQr (String qrString){
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Participants/" + key1);
+        myRef.child("phone").setValue(newphone);
+        myRef.child("mail").setValue(newmail);
+        myRef.child("lastName").setValue(newlastname);
+        myRef.child("firstName").setValue(newfirstname);
 
-     String text=qrString ; // Whatever you need to encode in the QR code
-     MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+    }
 
-     try {
-         BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,200,200);
-         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-         QRCodeImg = barcodeEncoder.createBitmap(bitMatrix);
+    void generateQr(String qrString) {
 
+        String text = qrString; // Whatever you need to encode in the QR code
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
-         String filename = key1.toString();
-          sd = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            QRCodeImg = barcodeEncoder.createBitmap(bitMatrix);
 
 
-         File dest = new File(sd, filename);
-         Log.d("vietii", dest.toString()) ;
+            String filename = key1.toString();
+            sd = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
-         try {
-             FileOutputStream out = new FileOutputStream(dest);
-             QRCodeImg.compress(Bitmap.CompressFormat.JPEG, 90, out);
-             out.flush();
-             out.close();
-         } catch (Exception e) {
-             e.printStackTrace();
-         }
+
+            File dest = new File(sd, filename);
+            Log.d("vietii", dest.toString());
+
+            try {
+                FileOutputStream out = new FileOutputStream(dest);
+                QRCodeImg.compress(Bitmap.CompressFormat.JPEG, 90, out);
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 //
 //         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
@@ -192,16 +194,13 @@ void updateinfo (){
 //        MediaStore.Images.Media.insertImage(getContentResolver(),QRCodeImg,key1.toString(),"");
 
 
+            Qr.setVisibility(View.VISIBLE);
+            Qr.setImageBitmap(QRCodeImg);
 
-
-
-         Qr.setVisibility(View.VISIBLE);
-         Qr.setImageBitmap(QRCodeImg);
-
-     } catch (WriterException e) {
-         e.printStackTrace();
-     }
- }
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private void setViews() {
@@ -215,9 +214,7 @@ void updateinfo (){
         lastname = (EditText) findViewById(R.id.lastname);
         phone = (EditText) findViewById(R.id.phone);
         mail = (EditText) findViewById(R.id.mail);
-        Qr = (ImageView) findViewById(R.id.QR) ;
-
-
+        Qr = (ImageView) findViewById(R.id.QR);
 
 
         barcodescan.setOnClickListener(new View.OnClickListener() {
@@ -234,50 +231,28 @@ void updateinfo (){
                 updateinfo();
 
 
-
-
-
-
-
-
                 new Thread(new Runnable() {
-
                     public void run() {
-
                         try {
-
                             GMailSender sender = new GMailSender(
-
                                     "send.repaly@gmail.com",
-
                                     "licenta123");
 
-
-String path =  sd.getPath()+"/" +key1.toString();
-                      sender.addAttachment(path);
-                            Log.d("vietii", path.toString()) ;
+                            String path = sd.getPath() + "/" + key1.toString();
+                            sender.addAttachment(path);
+                            Log.d("vietii", path.toString());
 
                             sender.sendMail("Test mail", "Cine e boss de bossss ?? Gabriela Dinu ",
 
                                     "send.repaly@gmail.com",
 
                                     "gabrieladnu@yahoo.com");
-                            Log.d("mail trimis " , "123456") ;
 
-
-
-
-
-
-
+                            Log.d("mail trimis ", "123456");
 
 
                         } catch (Exception e) {
-
-                            Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_LONG).show();
-
-
-
+                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -285,44 +260,30 @@ String path =  sd.getPath()+"/" +key1.toString();
                 }).start();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 Intent intent = new Intent(getBaseContext(), NewEntryActivity1.class);
                 intent.putExtra("key", key1);
-                intent.putExtra("qrCodeGenerated" , qrCodegenerate);
+                intent.putExtra("qrCodeGenerated", qrCodegenerate);
                 startActivity(intent);
 
             }
         });
 
     }
-    void setinfo (){
+
+    void setinfo() {
 
         next.setEnabled(true);
         firstname.setVisibility(View.VISIBLE);
         lastname.setVisibility(View.VISIBLE);
         mail.setVisibility(View.VISIBLE);
         phone.setVisibility(View.VISIBLE);
-        firstname.setText(participant.getFirstName() );
-        lastname.setText(participant.getLastName() );
+        firstname.setText(participant.getFirstName());
+        lastname.setText(participant.getLastName());
         mail.setText(participant.getMail());
         phone.setText(participant.getPhone());
     }
-    void clearinfo (){
+
+    void clearinfo() {
         firstname.setVisibility(View.INVISIBLE);
         lastname.setVisibility(View.INVISIBLE);
         mail.setVisibility(View.INVISIBLE);
@@ -332,7 +293,7 @@ String path =  sd.getPath()+"/" +key1.toString();
         lastname.setText("");
         mail.setText("");
         phone.setText("");
-       Qr.setImageBitmap(null);
+        Qr.setImageBitmap(null);
 
     }
 

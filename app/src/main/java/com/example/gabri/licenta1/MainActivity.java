@@ -69,7 +69,8 @@ public static final int REQUEST_PERMISSION=10;
 
         userScann.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               //TODO
+                Intent intent = new Intent(getBaseContext(), CheckActivity.class);
+                startActivity(intent);
             }
         });
     }

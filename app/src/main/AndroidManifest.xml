@@ -61,6 +61,8 @@
         <activity android:name=".ScannIdCardActivity" />
         <activity android:name=".NewEntryActivity1" />
 
+        <activity android:name=".CheckActivity" />
+
 
     </application>
 
