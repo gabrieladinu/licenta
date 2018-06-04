@@ -57,6 +57,7 @@ public class NewEntryActivity extends AppCompatActivity {
 
     Participants participant;
     String key1;
+    String newmail;
     String qrCodegenerate;
     FirebaseDatabase database;
 
@@ -148,7 +149,7 @@ public class NewEntryActivity extends AppCompatActivity {
         String newfirstname = firstname.getText().toString();
         String newlastname = lastname.getText().toString();
         String newphone = phone.getText().toString();
-        String newmail = mail.getText().toString();
+        newmail = mail.getText().toString();
 
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Participants/" + key1);
@@ -246,7 +247,7 @@ public class NewEntryActivity extends AppCompatActivity {
 
                                     "send.repaly@gmail.com",
 
-                                    "gabrieladnu@yahoo.com");
+                                    newmail);
 
                             Log.d("mail trimis ", "123456");
 
