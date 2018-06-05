@@ -1,14 +1,22 @@
 package com.example.gabri.licenta1;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.TestLooperManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,12 +24,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class CheckActivity extends AppCompatActivity {
 
     Participants participant;
-    TextView qrCoderesult ;
-    String key ;
+    TextView qrCoderesult;
+    String key;
+    ImageView imageId;
+
+    TextView firstName;
+    TextView lastName;
+
+    FirebaseStorage storage;
+    StorageReference storageReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +48,7 @@ public class CheckActivity extends AppCompatActivity {
 
 
     }
+
     public void scanBarcode(View v) {
         Intent intent = new Intent(this, ScannBarcodeActivity.class);
         startActivityForResult(intent, 0);
@@ -52,7 +71,7 @@ public class CheckActivity extends AppCompatActivity {
                     Barcode barcode = data.getParcelableExtra("barcode");
                     qrCoderesult.setText("Qr Code : " + barcode.displayValue);
                     String stringqrcode = barcode.displayValue.toString();
-                     search(stringqrcode);
+                    search(stringqrcode);
 
                 } else {
                     qrCoderesult.setText("BarCode not found!");
@@ -62,6 +81,7 @@ public class CheckActivity extends AppCompatActivity {
             }
         }
     }
+
     void search(final String stringqrcode) {
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef = database.getReference("Participants/1");
@@ -78,9 +98,10 @@ public class CheckActivity extends AppCompatActivity {
                         key = postSnapshot.getKey();
                         Log.d("key", "  " + key);
                         Log.d("search qrcode", stringqrcode + "    Value is: " + participant);
-//                        setinfo();
+                        setinfo();
 //                        qrCodegenerate = "ky" + key1.toString() + "bc" + stringbarcode + "acc";
 //                        generateQr(qrCodegenerate);
+                        saveimg();
                     }
                 } else {
                     Log.d("ceva", "nu exista in baza de date ");
@@ -100,10 +121,55 @@ public class CheckActivity extends AppCompatActivity {
 
     }
 
+    void setinfo() {
+
+
+        firstName.setVisibility(View.VISIBLE);
+        lastName.setVisibility(View.VISIBLE);
+//        mail.setVisibility(View.VISIBLE);
+//        phone.setVisibility(View.VISIBLE);
+        firstName.setText(participant.getFirstName());
+        lastName.setText(participant.getLastName());
+//        mail.setText(participant.getMail());
+//        phone.setText(participant.getPhone());
+    }
+
+    void saveimg() {
+//        gs://licenta-73791.appspot.com/1.jpg
+
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+
+        storageRef.child(key + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Got the download URL for 'users/me/profile.png'
+
+                Log.d("uri", uri.toString());
+                Glide.with(getApplicationContext())
+                        .load(uri)
+                        .into(imageId);
+
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+
+            }
+        });
+
+
+
+    }
 
     void setViews() {
-        Button qrCodeScan =  (Button)  findViewById(R.id.qrCodeScan);
+        Button qrCodeScan = (Button) findViewById(R.id.qrCodeScan);
         qrCoderesult = (TextView) findViewById(R.id.qrCode);
+        firstName = (TextView) findViewById(R.id.firstName);
+        lastName = (TextView) findViewById(R.id.lastName);
+        imageId = (ImageView) findViewById(R.id.imageId);
 
         qrCodeScan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

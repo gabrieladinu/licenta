@@ -63,7 +63,7 @@ public class NewEntryActivity1 extends AppCompatActivity {
     String sex;
     Button sumbit;
     int year = Integer.parseInt(new SimpleDateFormat("yyyy", Locale.getDefault()).format(new Date()));
-    String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault()).format(new Date());
+    String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
     String varsta;
     String key1;
     String qrCodegenerated;
@@ -295,7 +295,7 @@ clearinfo();
                     }
                     int bornyear = Integer.parseInt(cnp.substring(1, 3));
                     // sa nascut inainte de 2000 asica 19xx
-                    if (gen.equals('2') || gen.equals('1')) {
+                    if (gen.equals('6') || gen.equals('1')) {
                         bornyear = 1900 + bornyear;
                     }
                     if (gen.equals('5') || gen.equals('6')) {

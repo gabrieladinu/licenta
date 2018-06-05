@@ -20,10 +20,28 @@ public class Participants {
     private String numberChekIn;
     private String register;
     private String sex;
-    private String phone ;
-    private String qrCodegenerated ;
+    private String phone;
+    private String qrCodegenerated;
+
+    private String checkInData;
+    private String checkQutData;
 
 
+    public String getCheckInData() {
+        return checkInData;
+    }
+
+    public void setCheckInData(String checkInData) {
+        this.checkInData = checkInData;
+    }
+
+    public String getCheckQutData() {
+        return checkQutData;
+    }
+
+    public void setCheckQutData(String checkQutData) {
+        this.checkQutData = checkQutData;
+    }
     public String getPhone() {
         return phone;
     }
@@ -32,10 +50,13 @@ public class Participants {
         this.phone = phone;
     }
 
-    public Participants() {}
+    public Participants() {
+    }
 
-    public Participants(String age, String barCode, String checkIn, String checkOut, String details, String firstName, String lastName, String mail, String numberChekIn, String register, String sex, String phone , String qrCodegenerated) {
+    public Participants(String age, String checkInData, String checkQutData ,String barCode, String checkIn, String checkOut, String details, String firstName, String lastName, String mail, String numberChekIn, String register, String sex, String phone, String qrCodegenerated) {
         this.age = age;
+        this.checkInData = checkInData;
+    this.checkQutData =checkQutData;
         this.barCode = barCode;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
@@ -46,7 +67,7 @@ public class Participants {
         this.numberChekIn = numberChekIn;
         this.register = register;
         this.sex = sex;
-        this.qrCodegenerated =qrCodegenerated ;
+        this.qrCodegenerated = qrCodegenerated;
 
     }
 
@@ -54,7 +75,9 @@ public class Participants {
         return qrCodegenerated;
     }
 
-    public void setqrCodegenerated(String qrCodegenerated) { this.qrCodegenerated = qrCodegenerated;  }
+    public void setqrCodegenerated(String qrCodegenerated) {
+        this.qrCodegenerated = qrCodegenerated;
+    }
 
     public String getAge() {
         return age;
@@ -159,6 +182,8 @@ public class Participants {
                 ", register='" + register + '\'' +
                 ", sex='" + sex + '\'' +
                 ", phone='" + phone + '\'' +
+                ", checkInData='" + checkInData + '\'' +
+                ", checkQutData='" + checkQutData + '\'' +
                 " , qrCodegenerated " + qrCodegenerated + '\'' +
                 '}';
     }
