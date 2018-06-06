@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.TestLooperManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -177,9 +176,9 @@ public class CheckActivity extends AppCompatActivity {
     }
 
     void choise(Participants participant){
+        problem.setEnabled(true);
         chechIn.setEnabled(true);
         checkOut.setEnabled(false);
-        problem.setEnabled(true);
 
         if ("1".equals(participant.getCheckIn())){
             chechIn.setEnabled(false);
@@ -225,23 +224,14 @@ void checkIn(){
     void report(){
         checkOut.setEnabled(true);
         chechIn.setEnabled(true);
-        String problema = participant.getProblem() ;
-
-            if (TextUtils.isEmpty(problema)) {
-            problema = "0" ;
-        }
-        Integer nrproblem = Integer.parseInt(problema);
-        nrproblem =nrproblem +1 ;
 
 
-
-Log.d("problema " , problema);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Participants/" + key);
 
-        myRef.child("problem").setValue(nrproblem.toString());
+        myRef.child("problem").setValue("barosane ce ai facut?");
 
 
     }
@@ -257,8 +247,8 @@ Log.d("problema " , problema);
          problem = (Button) findViewById(R.id.report);
          checkOut = (Button) findViewById(R.id.checkout);
         chechIn.setEnabled(false);
-        problem.setEnabled(false);
         checkOut.setEnabled(false);
+        problem.setEnabled(false);
 
         qrCodeScan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
