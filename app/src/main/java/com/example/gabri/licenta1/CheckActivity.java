@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.TestLooperManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,18 +28,26 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class CheckActivity extends AppCompatActivity {
 
     Participants participant;
     TextView qrCoderesult;
     String key;
     ImageView imageId;
+    Button chechIn;
+    Button problem;
+    Button checkOut;
 
     TextView firstName;
     TextView lastName;
 
     FirebaseStorage storage;
     StorageReference storageReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +82,8 @@ public class CheckActivity extends AppCompatActivity {
                     String stringqrcode = barcode.displayValue.toString();
                     search(stringqrcode);
 
+
+
                 } else {
                     qrCoderesult.setText("BarCode not found!");
 //                    next.setEnabled(false);
@@ -98,10 +109,11 @@ public class CheckActivity extends AppCompatActivity {
                         key = postSnapshot.getKey();
                         Log.d("key", "  " + key);
                         Log.d("search qrcode", stringqrcode + "    Value is: " + participant);
-                        setinfo();
-//                        qrCodegenerate = "ky" + key1.toString() + "bc" + stringbarcode + "acc";
-//                        generateQr(qrCodegenerate);
                         saveimg();
+                        setinfo();
+                        choise(participant);
+
+
                     }
                 } else {
                     Log.d("ceva", "nu exista in baza de date ");
@@ -164,17 +176,111 @@ public class CheckActivity extends AppCompatActivity {
 
     }
 
+    void choise(Participants participant){
+        chechIn.setEnabled(true);
+        checkOut.setEnabled(false);
+        problem.setEnabled(true);
+
+        if ("1".equals(participant.getCheckIn())){
+            chechIn.setEnabled(false);
+            checkOut.setEnabled(true);
+        }
+        if ("1".equals(participant.getCheckOut())){
+            chechIn.setEnabled(true);
+            checkOut.setEnabled(false);
+        }
+
+
+    }
+
+
+
+void checkIn(){
+    String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Participants/" + key);
+
+    myRef.child("checkIn").setValue("1");
+    myRef.child("checkOut").setValue("0");
+    myRef.child("checkInData").setValue(timeStamp);
+
+
+}
+    void checkOut(){
+        String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Participants/" + key);
+
+        myRef.child("checkIn").setValue("0");
+        myRef.child("checkOut").setValue("1");
+        myRef.child("checkOutData").setValue(timeStamp);
+
+    }
+
+
+    void report(){
+        checkOut.setEnabled(true);
+        chechIn.setEnabled(true);
+        String problema = participant.getProblem() ;
+
+            if (TextUtils.isEmpty(problema)) {
+            problema = "0" ;
+        }
+        Integer nrproblem = Integer.parseInt(problema);
+        nrproblem =nrproblem +1 ;
+
+
+
+Log.d("problema " , problema);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Participants/" + key);
+
+        myRef.child("problem").setValue(nrproblem.toString());
+
+
+    }
+
+
     void setViews() {
         Button qrCodeScan = (Button) findViewById(R.id.qrCodeScan);
         qrCoderesult = (TextView) findViewById(R.id.qrCode);
         firstName = (TextView) findViewById(R.id.firstName);
         lastName = (TextView) findViewById(R.id.lastName);
         imageId = (ImageView) findViewById(R.id.imageId);
+         chechIn = (Button) findViewById(R.id.checkin);
+         problem = (Button) findViewById(R.id.report);
+         checkOut = (Button) findViewById(R.id.checkout);
+        chechIn.setEnabled(false);
+        problem.setEnabled(false);
+        checkOut.setEnabled(false);
 
         qrCodeScan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 scanBarcode(v);
                 // apeleaza scanBarcode care apeleaza efectic ScannBarcodeActivity, unde se realizeaza scanarea efectiva
+            }
+        });
+        chechIn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            checkIn() ;
+
+            }
+        });
+
+        problem.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            report();
+            }
+        });
+        checkOut.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            checkOut() ;
             }
         });
 

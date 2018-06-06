@@ -17,7 +17,7 @@ public class Participants {
     private String firstName;
     private String lastName;
     private String mail;
-    private String numberChekIn;
+    private String problem;
     private String register;
     private String sex;
     private String phone;
@@ -53,7 +53,7 @@ public class Participants {
     public Participants() {
     }
 
-    public Participants(String age, String checkInData, String checkQutData ,String barCode, String checkIn, String checkOut, String details, String firstName, String lastName, String mail, String numberChekIn, String register, String sex, String phone, String qrCodegenerated) {
+    public Participants(String age, String checkInData, String checkQutData ,String barCode, String checkIn, String checkOut, String details, String firstName, String lastName, String mail, String problem, String register, String sex, String phone, String qrCodegenerated) {
         this.age = age;
         this.checkInData = checkInData;
     this.checkQutData =checkQutData;
@@ -64,7 +64,7 @@ public class Participants {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mail = mail;
-        this.numberChekIn = numberChekIn;
+        this.problem = problem;
         this.register = register;
         this.sex = sex;
         this.qrCodegenerated = qrCodegenerated;
@@ -143,12 +143,12 @@ public class Participants {
         this.mail = mail;
     }
 
-    public String getNumberChekIn() {
-        return numberChekIn;
+    public String getProblem() {
+        return problem;
     }
 
-    public void setNumberChekIn(String numberChekIn) {
-        this.numberChekIn = numberChekIn;
+    public void setProblem(String problem) {
+        this.problem = problem;
     }
 
     public String getRegister() {
@@ -178,7 +178,7 @@ public class Participants {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", mail='" + mail + '\'' +
-                ", numberChekIn='" + numberChekIn + '\'' +
+                ", problem='" + problem + '\'' +
                 ", register='" + register + '\'' +
                 ", sex='" + sex + '\'' +
                 ", phone='" + phone + '\'' +
