@@ -184,15 +184,15 @@ public class NewEntryActivity1 extends AppCompatActivity {
                 Log.d("++", "++");
                 com.google.android.gms.vision.face.Face face = faces.valueAt(index);
                 canvas.drawRect(
-                        face.getPosition().x - face.getWidth() * 2 / 10,
+                        face.getPosition().x - face.getWidth() * 3 / 10,
                         face.getPosition().y - face.getHeight() * 8 / 100,
                         face.getPosition().x + face.getWidth() + face.getWidth() * 2 / 10,
                         face.getPosition().y + face.getHeight() + face.getHeight() / 2, paint);
 
 
-                int x = (int) face.getPosition().x - (int) face.getWidth() * 2 / 10;
+                int x = (int) face.getPosition().x - (int) face.getWidth() * 5 / 10;
                 int y = (int) face.getPosition().y - (int) face.getHeight() * 1 / 10;
-                int height = (int) face.getHeight() + (int) face.getHeight() * 5 / 100;
+                int height = (int) face.getHeight() + (int) face.getHeight() * 50 / 100;
                 int width = (int) face.getWidth() + (int) face.getWidth() * 1 / 10;
 
                 // imaginea micuata
