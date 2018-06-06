@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.TestLooperManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -225,14 +226,18 @@ void checkIn(){
         checkOut.setEnabled(true);
         chechIn.setEnabled(true);
 
+        String problema = participant.getProblem() ;
+
+
+
+
+
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Participants/" + key);
-
-        myRef.child("problem").setValue("barosane ce ai facut?");
-
+        myRef.child("problem").setValue("1");
 
     }
 
