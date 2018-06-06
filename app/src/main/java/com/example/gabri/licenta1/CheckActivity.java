@@ -32,6 +32,7 @@ import com.google.firebase.storage.StorageReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.function.ToDoubleBiFunction;
 
 public class CheckActivity extends AppCompatActivity {
 
@@ -45,6 +46,8 @@ public class CheckActivity extends AppCompatActivity {
 
     TextView firstName;
     TextView lastName;
+    TextView sex;
+    TextView age;
 
     FirebaseStorage storage;
     StorageReference storageReference;
@@ -79,7 +82,7 @@ public class CheckActivity extends AppCompatActivity {
             if (requestCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra("barcode");
-                    qrCoderesult.setText("Qr Code : " + barcode.displayValue);
+                    qrCoderesult.setText("Associated Qr Code  : " + barcode.displayValue);
                     String stringqrcode = barcode.displayValue.toString();
                     search(stringqrcode);
 
@@ -139,12 +142,12 @@ public class CheckActivity extends AppCompatActivity {
 
         firstName.setVisibility(View.VISIBLE);
         lastName.setVisibility(View.VISIBLE);
-//        mail.setVisibility(View.VISIBLE);
-//        phone.setVisibility(View.VISIBLE);
+      age.setVisibility(View.VISIBLE);
+      sex.setVisibility(View.VISIBLE);
         firstName.setText(participant.getFirstName());
         lastName.setText(participant.getLastName());
-//        mail.setText(participant.getMail());
-//        phone.setText(participant.getPhone());
+        sex.setText(participant.getSex());
+        age.setText(participant.getAge());
     }
 
     void saveimg() {
@@ -234,8 +237,6 @@ void checkIn(){
 
 
 
-
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Participants/" + key);
@@ -249,6 +250,9 @@ void checkIn(){
         qrCoderesult = (TextView) findViewById(R.id.qrCode);
         firstName = (TextView) findViewById(R.id.firstName);
         lastName = (TextView) findViewById(R.id.lastName);
+        sex = (TextView) findViewById(R.id.sex);
+        age = (TextView) findViewById(R.id.age);
+
         imageId = (ImageView) findViewById(R.id.imageId);
          chechIn = (Button) findViewById(R.id.checkin);
          problem = (Button) findViewById(R.id.report);
