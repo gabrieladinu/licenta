@@ -27,8 +27,9 @@
 
         <ImageView
             android:id="@+id/imageId"
-            android:layout_width="200px"
-            android:layout_height="400px" />
+            android:layout_width="250px"
+            android:layout_height="350px"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/qrCode"

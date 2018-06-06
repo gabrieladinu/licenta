@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -160,6 +161,7 @@ public class CheckActivity extends AppCompatActivity {
 
                 Log.d("uri", uri.toString());
                 Glide.with(getApplicationContext())
+                        .applyDefaultRequestOptions(RequestOptions.circleCropTransform())
                         .load(uri)
                         .into(imageId);
 
