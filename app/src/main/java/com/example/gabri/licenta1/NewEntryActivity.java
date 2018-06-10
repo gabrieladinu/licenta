@@ -187,14 +187,6 @@ public class NewEntryActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-//
-//         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-//         QRCodeImg.compress(Bitmap.CompressFormat.PNG, 90, storageDir);
-//
-//
-//        MediaStore.Images.Media.insertImage(getContentResolver(),QRCodeImg,key1.toString(),"");
-
-
             Qr.setVisibility(View.VISIBLE);
             Qr.setImageBitmap(QRCodeImg);
 
@@ -243,7 +235,7 @@ public class NewEntryActivity extends AppCompatActivity {
                             sender.addAttachment(path);
                             Log.d("vietii", path.toString());
 
-                            sender.sendMail("Test mail", "Cine e boss de bossss ?? Gabriela Dinu ",
+                            sender.sendMail("Code unic de intrare ", "Acest mesaj contine Qr codul necesar pentru a intra in cadrul festivalului. Acest cod nu este transmisibil, iar abaterile vor fi sanctionate comform regulamentului. ",
 
                                     "send.repaly@gmail.com",
 

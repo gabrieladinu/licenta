@@ -6,9 +6,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Participants {
-
     private String age;
     private String barCode;
     private String checkIn;
@@ -22,41 +20,15 @@ public class Participants {
     private String sex;
     private String phone;
     private String qrCodegenerated;
-
     private String checkInData;
     private String checkQutData;
 
+    public Participants() {    }
 
-    public String getCheckInData() {
-        return checkInData;
-    }
-
-    public void setCheckInData(String checkInData) {
-        this.checkInData = checkInData;
-    }
-
-    public String getCheckQutData() {
-        return checkQutData;
-    }
-
-    public void setCheckQutData(String checkQutData) {
-        this.checkQutData = checkQutData;
-    }
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Participants() {
-    }
-
-    public Participants(String age, String checkInData, String checkQutData ,String barCode, String checkIn, String checkOut, String details, String firstName, String lastName, String mail, String problem, String register, String sex, String phone, String qrCodegenerated) {
+    public Participants(String age, String checkInData, String checkQutData, String barCode, String checkIn, String checkOut, String details, String firstName, String lastName, String mail, String problem, String register, String sex, String phone, String qrCodegenerated) {
         this.age = age;
         this.checkInData = checkInData;
-    this.checkQutData =checkQutData;
+        this.checkQutData = checkQutData;
         this.barCode = barCode;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
@@ -77,6 +49,30 @@ public class Participants {
 
     public void setqrCodegenerated(String qrCodegenerated) {
         this.qrCodegenerated = qrCodegenerated;
+    }
+
+    public String getCheckInData() {
+        return checkInData;
+    }
+
+    public void setCheckInData(String checkInData) {
+        this.checkInData = checkInData;
+    }
+
+    public String getCheckQutData() {
+        return checkQutData;
+    }
+
+    public void setCheckQutData(String checkQutData) {
+        this.checkQutData = checkQutData;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getAge() {

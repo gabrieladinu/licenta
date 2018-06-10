@@ -67,7 +67,6 @@ public class GMailSender extends javax.mail.Authenticator {
         this.password = password;
 
 
-
         Properties props = new Properties();
 
         props.setProperty("mail.transport.protocol", "smtp");
