@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Licenta1</string>
+    <string name="app_name">The Border</string>
     <string name="action_settings">Settings</string>
     <string name="newEntryScann">Barcode Scan</string>
     <string name="checkEntry">Check-in/Check-out</string>
