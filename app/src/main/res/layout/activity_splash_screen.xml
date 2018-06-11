@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/spashscreen1"
+    android:background="@drawable/spashscreen2"
     >
 
     <ImageView
@@ -31,5 +31,6 @@
         android:gravity="center"
         android:text="The Border"
         android:textSize="24dp"
+        android:textColor="@color/buttontext"
         android:textStyle="bold"/>
 </RelativeLayout>

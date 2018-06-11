@@ -18,7 +18,7 @@
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textColor="@color/outerSpace"/>
 
     <TextView
@@ -38,6 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:text="Id Scan "
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         />
 
     <TextView
@@ -122,6 +124,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="submit"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:enabled="false" />
 
 </RelativeLayout>

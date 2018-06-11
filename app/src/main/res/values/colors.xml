@@ -7,4 +7,14 @@
     <color name="fond">#acbdba</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
+    <color name="text">#C5EBC3</color>
+    <color name="button">#B7C8B5</color>
+    <color name="buttontext">#7A6979</color>
+
+    <color name="button2">#85B79D</color>
+
+    <color name="buttonnotenable">#DEE6DD</color>
+    <color name="buttonnotenabletext">#AF9AAD</color>
+
 </resources>

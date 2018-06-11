@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backgroud2"
 
    >
 <LinearLayout
@@ -19,8 +20,9 @@
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="30dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/outerSpace"/>
+        android:layout_marginTop="20dp"
+        android:textColor="@color/text"
+        />
 
     <TextView
         android:id="@+id/instruction"
@@ -29,8 +31,8 @@
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:text="Scan BarCode / QrCode "
-        android:textColor="@color/outerSpace"
-        android:textSize="20dp"
+        android:textColor="@color/text"
+        android:textSize="24dp"
         android:layout_marginBottom="30dp"
        />
 
@@ -39,25 +41,38 @@
     <Button
         android:id="@+id/barcodescan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:text="@string/newEntryScann" />
+        android:text="@string/newEntryScann"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/buttontext"
+        android:background="@color/button"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/QR"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/barcode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/newEntryScann"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:hint="Barcode"
         android:text=" "
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        />
+        android:textColor="@color/text"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/nobarcode"
@@ -67,13 +82,13 @@
         android:hint="Barcode"
         android:text=" "
         android:layout_marginTop="10dp"
-        android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:textColor="@color/text"/>
 
     <EditText
         android:id="@+id/firstname"
@@ -84,7 +99,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text=""
-        android:hint="First Name "/>
+        android:hint="First Name "
+        android:textColor="@color/text"/>
     <EditText
         android:id="@+id/lastname"
         android:layout_height="wrap_content"
@@ -94,7 +110,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text=""
-        android:hint="Last Name "/>
+        android:hint="Last Name "
+        android:textColor="@color/text"/>
 
 
     <EditText
@@ -105,7 +122,8 @@
         android:visibility="invisible"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:hint="Phone"/>
+        android:hint="Phone"
+        android:textColor="@color/text"/>
 
     <EditText
         android:id="@+id/mail"
@@ -116,14 +134,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text=""
-        android:hint="Mail"/>
+        android:hint="Mail"
+        android:textColor="@color/text"/>
 
-    <ImageView
-        android:id="@+id/QR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-         />
 </LinearLayout>
 
 
@@ -133,10 +146,17 @@
     <Button
         android:id="@+id/next"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+
         android:text="Next"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/buttontext"
+        android:background="@color/button"
+        />
 
 </RelativeLayout>
