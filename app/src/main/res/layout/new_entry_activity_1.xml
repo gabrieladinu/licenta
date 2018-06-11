@@ -2,9 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backgroud2">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +19,7 @@
         android:gravity="center"
         android:textSize="30dp"
         android:layout_marginTop="20dp"
-        android:textColor="@color/outerSpace"/>
+        android:textColor="@color/text"/>
 
     <TextView
         android:id="@+id/instruction2"
@@ -28,18 +28,21 @@
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:text="Scan Identity Card  "
-        android:textColor="@color/outerSpace"
+        android:textColor="@color/text"
         android:textSize="20dp"
         android:layout_marginBottom="30dp"
         />
     <Button
         android:id="@+id/idscann"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="Id Scan "
-        android:layout_marginRight="10dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textStyle="bold"
+        android:background="@color/button"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/buttontext"
+        android:text="Id Scan "
         />
 
     <TextView
@@ -48,8 +51,8 @@
         android:layout_height="wrap_content"
         android:text=" "
         android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textColor="@color/text"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="20dp"
@@ -60,7 +63,8 @@
     android:layout_marginLeft="50px"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp">
 
         <ImageView
             android:layout_weight="3"
@@ -78,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="50px"
+            android:layout_marginLeft="100px"
             android:layout_marginRight="50px"
 
 
@@ -87,46 +91,50 @@
 </LinearLayout>
 
 
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/ageid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text=" "
+        android:textColor="@color/text"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
             <TextView
-                android:id="@+id/ageid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=" "
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:visibility="invisible"/>
-
-            <TextView
+                android:layout_marginTop="20dp"
                 android:id="@+id/sexid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=" "
-                android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textColor="@color/text"
+                android:textSize="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:visibility="invisible"/>
-
-
-
+                android:visibility="invisible"
+                android:textStyle="bold"/>
 
 
 
 
 </LinearLayout>
+
     <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="submit"
-        android:layout_marginBottom="3dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
-        android:enabled="false" />
+        android:layout_marginRight="10dp"
+        android:background="@color/button"
+        android:enabled="false"
+        android:text="submit"
+        android:textColor="@color/buttontext"
+        android:textStyle="bold" />
 
 </RelativeLayout>
