@@ -48,6 +48,8 @@ public class CheckActivity extends AppCompatActivity {
     TextView lastName;
     TextView sex;
     TextView age;
+    TextView phone;
+    TextView mail;
 
     FirebaseStorage storage;
     StorageReference storageReference;
@@ -82,10 +84,9 @@ public class CheckActivity extends AppCompatActivity {
             if (requestCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra("barcode");
-                    qrCoderesult.setText("Associated Qr Code  : " + barcode.displayValue);
+                    qrCoderesult.setText("Qr Code: " + barcode.displayValue);
                     String stringqrcode = barcode.displayValue.toString();
                     search(stringqrcode);
-
 
 
                 } else {
@@ -142,12 +143,16 @@ public class CheckActivity extends AppCompatActivity {
 
         firstName.setVisibility(View.VISIBLE);
         lastName.setVisibility(View.VISIBLE);
-      age.setVisibility(View.VISIBLE);
-      sex.setVisibility(View.VISIBLE);
+        age.setVisibility(View.VISIBLE);
+        sex.setVisibility(View.VISIBLE);
         firstName.setText(participant.getFirstName());
         lastName.setText(participant.getLastName());
         sex.setText(participant.getSex());
         age.setText(participant.getAge());
+        phone.setVisibility(View.VISIBLE);
+        phone.setText(participant.getPhone());
+        mail.setVisibility(View.VISIBLE);
+        mail.setText(participant.getMail());
     }
 
     void saveimg() {
@@ -178,19 +183,18 @@ public class CheckActivity extends AppCompatActivity {
         });
 
 
-
     }
 
-    void choise(Participants participant){
+    void choise(Participants participant) {
         problem.setEnabled(true);
         chechIn.setEnabled(true);
         checkOut.setEnabled(false);
 
-        if ("1".equals(participant.getCheckIn())){
+        if ("1".equals(participant.getCheckIn())) {
             chechIn.setEnabled(false);
             checkOut.setEnabled(true);
         }
-        if ("1".equals(participant.getCheckOut())){
+        if ("1".equals(participant.getCheckOut())) {
             chechIn.setEnabled(true);
             checkOut.setEnabled(false);
         }
@@ -199,21 +203,21 @@ public class CheckActivity extends AppCompatActivity {
     }
 
 
+    void checkIn() {
+        String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
 
-void checkIn(){
-    String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Participants/" + key);
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Participants/" + key);
-
-    myRef.child("checkIn").setValue("1");
-    myRef.child("checkOut").setValue("0");
-    myRef.child("checkInData").setValue(timeStamp);
+        myRef.child("checkIn").setValue("1");
+        myRef.child("checkOut").setValue("0");
+        myRef.child("checkInData").setValue(timeStamp);
 
 
-}
-    void checkOut(){
+    }
+
+    void checkOut() {
         String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -227,14 +231,11 @@ void checkIn(){
     }
 
 
-    void report(){
+    void report() {
         checkOut.setEnabled(true);
         chechIn.setEnabled(true);
 
-        String problema = participant.getProblem() ;
-
-
-
+        String problema = participant.getProblem();
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -252,11 +253,13 @@ void checkIn(){
         lastName = (TextView) findViewById(R.id.lastName);
         sex = (TextView) findViewById(R.id.sex);
         age = (TextView) findViewById(R.id.age);
+        phone = (TextView) findViewById(R.id.phone);
+        mail = (TextView) findViewById(R.id.mail);
 
         imageId = (ImageView) findViewById(R.id.imageId);
-         chechIn = (Button) findViewById(R.id.checkin);
-         problem = (Button) findViewById(R.id.report);
-         checkOut = (Button) findViewById(R.id.checkout);
+        chechIn = (Button) findViewById(R.id.checkin);
+        problem = (Button) findViewById(R.id.report);
+        checkOut = (Button) findViewById(R.id.checkout);
         chechIn.setEnabled(false);
         checkOut.setEnabled(false);
         problem.setEnabled(false);
@@ -269,19 +272,19 @@ void checkIn(){
         });
         chechIn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            checkIn() ;
+                checkIn();
 
             }
         });
 
         problem.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            report();
+                report();
             }
         });
         checkOut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            checkOut() ;
+                checkOut();
             }
         });
 

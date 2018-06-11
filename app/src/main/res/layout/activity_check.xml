@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backgroud2">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,56 +13,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="70dp"
             android:gravity="center"
             android:text="Scan QrCode "
-            android:textColor="@color/outerSpace"
-            android:textSize="20dp" />
+            android:textColor="@color/text"
+            android:textStyle="bold"
+
+            android:textSize="30dp" />
 
         <Button
             android:id="@+id/qrCodeScan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="Scan Qr Code" />
+            android:text="Scan Qr Code"
+            android:textStyle="bold"
+            android:textColor="@color/buttontext"
+            android:background="@color/button"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
 
         <ImageView
             android:id="@+id/imageId"
-            android:layout_width="250px"
-            android:layout_height="350px"
-            android:layout_gravity="center"/>
+            android:layout_width="300px"
+            android:layout_height="300px"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
 
         <TextView
-            android:id="@+id/qrCode"
+            android:id="@+id/age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="" />
-
+            android:text=""
+            android:textColor="@color/text"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
-            android:id="@+id/first"
+            android:id="@+id/sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="First Name :" />
+            android:text=""
+            android:textColor="@color/text"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/firstName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginTop="10dp"
 
-        <TextView
-            android:id="@+id/last"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Last Name :" />
+            android:textSize="20dp"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/lastName"
@@ -69,35 +85,51 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="" />
+            android:text=""
+            android:textSize="20dp"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
-            android:id="@+id/agetext"
+            android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Age :" />
+            android:text=""
+            android:textColor="@color/text"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
-            android:id="@+id/age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
-
-        <TextView
-            android:id="@+id/sextext"
+            android:id="@+id/mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Sex :" />
+            android:text=""
+            android:textColor="@color/text"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
 
         <TextView
-            android:id="@+id/sex"
+            android:id="@+id/qrCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text=""
+            android:textColor="@color/text"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            />
 
     </LinearLayout>
 
@@ -105,6 +137,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
 
@@ -113,21 +148,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Check-In" />
+            android:text="Check-In"
+            android:background="@color/buttonnotenable"
+            android:textStyle="bold"
+            android:textColor="@color/buttonnotenabletext"/>
 
         <Button
             android:id="@+id/report"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Report" />
+            android:text="Report"
+            android:background="@color/button"
+            android:textStyle="bold"
+            android:textColor="@color/buttontext"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
 
         <Button
             android:id="@+id/checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Check-Out" />
+            android:text="Check-Out"
+            android:background="@color/button"
+            android:textStyle="bold"
+            android:textColor="@color/buttontext"/>
     </LinearLayout>
 
 </RelativeLayout>
