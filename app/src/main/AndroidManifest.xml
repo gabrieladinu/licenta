@@ -70,6 +70,8 @@
         <activity android:name=".NewEntryActivity1" />
 
         <activity android:name=".CheckActivity" />
+        <activity android:name=".ThankYouActivity" />
+
 
 
     </application>

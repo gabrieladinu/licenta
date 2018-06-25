@@ -415,6 +415,8 @@ clearinfo();
             public void onClick(View v) {
 
                 updateinfo();
+                Intent intent = new Intent(getBaseContext(), ThankYouActivity.class);
+                startActivity(intent);
             }
         });
 
