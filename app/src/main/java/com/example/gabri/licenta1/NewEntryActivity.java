@@ -122,9 +122,19 @@ public class NewEntryActivity extends AppCompatActivity {
                         key1 = postSnapshot.getKey();
                         Log.d("key", "  " + key1);
                         Log.d("search", stringbarcode + "    Value is: " + participant);
+
+                        if (participant.getRegister().length()>1){
+                            Log.d("register", "Ticket already registered !");
+                            nobarcodeinfo.setVisibility(View.VISIBLE);
+                            nobarcodeinfo.setText("Ticket already registered !");
+                            next.setEnabled(false);
+                            clearinfo();
+
+                        }else {Log.d("register", "nu are valaore ");
+
                         setinfo();
                         qrCodegenerate = "ky" + key1.toString() + "bc" + stringbarcode + "acc";
-                        generateQr(qrCodegenerate);
+                        generateQr(qrCodegenerate);}
                     }
                 } else {
                     Log.d("ceva", "nu exista in baza de date ");
