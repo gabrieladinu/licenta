@@ -187,16 +187,30 @@ public class CheckActivity extends AppCompatActivity {
 
     void choise(Participants participant) {
         problem.setEnabled(true);
+        problem.setBackgroundColor(getResources().getColor(R.color.button));
+        problem.setTextColor(getResources().getColor(R.color.buttontext));
         chechIn.setEnabled(true);
+        chechIn.setBackgroundColor(getResources().getColor(R.color.button));
+        chechIn.setTextColor(getResources().getColor(R.color.buttontext));
         checkOut.setEnabled(false);
+        checkOut.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+        checkOut.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
 
         if ("1".equals(participant.getCheckIn())) {
             chechIn.setEnabled(false);
+            chechIn.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+            chechIn.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
             checkOut.setEnabled(true);
+            checkOut.setBackgroundColor(getResources().getColor(R.color.button));
+            checkOut.setTextColor(getResources().getColor(R.color.buttontext));
         }
         if ("1".equals(participant.getCheckOut())) {
             chechIn.setEnabled(true);
+            chechIn.setBackgroundColor(getResources().getColor(R.color.button));
+            chechIn.setTextColor(getResources().getColor(R.color.buttontext));
             checkOut.setEnabled(false);
+            checkOut.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+            checkOut.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
         }
 
 
@@ -233,7 +247,11 @@ public class CheckActivity extends AppCompatActivity {
 
     void report() {
         checkOut.setEnabled(true);
+        checkOut.setBackgroundColor(getResources().getColor(R.color.button));
+        checkOut.setTextColor(getResources().getColor(R.color.buttontext));
         chechIn.setEnabled(true);
+        chechIn.setBackgroundColor(getResources().getColor(R.color.button));
+        chechIn.setTextColor(getResources().getColor(R.color.buttontext));
 
         String problema = participant.getProblem();
 
@@ -261,8 +279,14 @@ public class CheckActivity extends AppCompatActivity {
         problem = (Button) findViewById(R.id.report);
         checkOut = (Button) findViewById(R.id.checkout);
         chechIn.setEnabled(false);
+        chechIn.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+        chechIn.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
         checkOut.setEnabled(false);
+        checkOut.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+        checkOut.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
         problem.setEnabled(false);
+        problem.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+        problem.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
 
         qrCodeScan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

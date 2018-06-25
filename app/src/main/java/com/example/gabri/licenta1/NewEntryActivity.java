@@ -100,6 +100,8 @@ public class NewEntryActivity extends AppCompatActivity {
                 } else {
                     barcodeinfo.setText("BarCode not found!");
                     next.setEnabled(false);
+                    next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+                    next.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
                     clearinfo();
                 }
             }
@@ -124,10 +126,12 @@ public class NewEntryActivity extends AppCompatActivity {
                         Log.d("search", stringbarcode + "    Value is: " + participant);
 
                         if (participant.getRegister().length()>1){
-                            Log.d("register", "Ticket already registered !");
+                            Log.d("register", "");
                             nobarcodeinfo.setVisibility(View.VISIBLE);
                             nobarcodeinfo.setText("Ticket already registered !");
                             next.setEnabled(false);
+                            next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+                            next.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
                             clearinfo();
 
                         }else {Log.d("register", "nu are valaore ");
@@ -141,6 +145,8 @@ public class NewEntryActivity extends AppCompatActivity {
                     nobarcodeinfo.setVisibility(View.VISIBLE);
                     nobarcodeinfo.setText("Nu este un bilet valid !");
                     next.setEnabled(false);
+                    next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+                    next.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
                     clearinfo();
                 }
 
@@ -276,6 +282,8 @@ public class NewEntryActivity extends AppCompatActivity {
     void setinfo() {
 
         next.setEnabled(true);
+        next.setBackgroundColor(getResources().getColor(R.color.button));
+        next.setTextColor(getResources().getColor(R.color.buttontext));
         firstname.setVisibility(View.VISIBLE);
         lastname.setVisibility(View.VISIBLE);
         mail.setVisibility(View.VISIBLE);

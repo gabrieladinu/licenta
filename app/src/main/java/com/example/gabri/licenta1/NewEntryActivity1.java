@@ -251,6 +251,8 @@ clearinfo();
         sexid.setText("Gen : " +sex);
         ageid.setText("Varsta : "+varsta);
         sumbit.setEnabled(true);
+        sumbit.setBackgroundColor(getResources().getColor(R.color.button));
+        sumbit.setTextColor(getResources().getColor(R.color.buttontext));
     }
 
 
@@ -413,10 +415,9 @@ clearinfo();
         });
         sumbit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                updateinfo();
                 Intent intent = new Intent(getBaseContext(), ThankYouActivity.class);
                 startActivity(intent);
+                updateinfo();
             }
         });
 
