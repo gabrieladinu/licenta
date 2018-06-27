@@ -48,7 +48,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:textColor="@color/buttontext"
-        android:background="@color/button"
+        android:background="@drawable/mybutton"
         android:textStyle="bold"/>
 
     <ImageView
@@ -156,7 +156,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/buttonnotenabletext"
-        android:background="@color/buttonnotenable"
+        android:background="@drawable/mybuttonnotenable"
         />
 
 </RelativeLayout>

@@ -32,7 +32,7 @@
         android:layout_marginLeft="10dp"
         android:text="@string/newEntry"
         android:textSize="18dp"
-        android:background="@color/button"
+        android:background="@drawable/mybutton"
         android:textColor="@color/buttontext"
         android:textStyle="bold"
         />
@@ -48,7 +48,7 @@
         android:layout_marginTop="-170dp"
         android:text="@string/checkEntry"
         android:textSize="18dp"
-        android:background="@color/button2"
+        android:background="@drawable/mybutton2"
         android:textColor="@color/buttontext"
 android:textStyle="bold"
         />

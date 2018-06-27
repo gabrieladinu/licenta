@@ -251,7 +251,8 @@ clearinfo();
         sexid.setText("Gen : " +sex);
         ageid.setText("Varsta : "+varsta);
         sumbit.setEnabled(true);
-        sumbit.setBackgroundColor(getResources().getColor(R.color.button));
+//        sumbit.setBackgroundColor(getResources().getColor(R.color.button));
+        sumbit.setBackgroundDrawable(getResources().getDrawable(R.drawable.mybutton));
         sumbit.setTextColor(getResources().getColor(R.color.buttontext));
     }
 

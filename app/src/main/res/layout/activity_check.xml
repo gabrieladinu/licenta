@@ -29,7 +29,7 @@
             android:text="Scan Qr Code"
             android:textStyle="bold"
             android:textColor="@color/buttontext"
-            android:background="@color/button"
+            android:background="@drawable/mybutton"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
 
@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Check-Out"
-            android:background="@color/button"
+            android:background="@drawable/mybutton"
             android:textStyle="bold"
             android:textColor="@color/buttontext"/>
     </LinearLayout>

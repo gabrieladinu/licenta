@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -100,7 +101,8 @@ public class NewEntryActivity extends AppCompatActivity {
                 } else {
                     barcodeinfo.setText("BarCode not found!");
                     next.setEnabled(false);
-                    next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+//                    next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+                    next.setBackgroundDrawable(getResources().getDrawable(R.drawable.mybuttonnotenable));
                     next.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
                     clearinfo();
                 }
@@ -130,7 +132,8 @@ public class NewEntryActivity extends AppCompatActivity {
                             nobarcodeinfo.setVisibility(View.VISIBLE);
                             nobarcodeinfo.setText("Ticket already registered !");
                             next.setEnabled(false);
-                            next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+//                            next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+                            next.setBackgroundDrawable(getResources().getDrawable(R.drawable.mybuttonnotenable));
                             next.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
                             clearinfo();
 
@@ -145,7 +148,8 @@ public class NewEntryActivity extends AppCompatActivity {
                     nobarcodeinfo.setVisibility(View.VISIBLE);
                     nobarcodeinfo.setText("Nu este un bilet valid !");
                     next.setEnabled(false);
-                    next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+//                    next.setBackgroundColor(getResources().getColor(R.color.buttonnotenable));
+                    next.setBackgroundDrawable(getResources().getDrawable(R.drawable.mybuttonnotenable));
                     next.setTextColor(getResources().getColor(R.color.buttonnotenabletext));
                     clearinfo();
                 }
@@ -249,7 +253,7 @@ public class NewEntryActivity extends AppCompatActivity {
 
                             String path = sd.getPath() + "/" + key1.toString();
                             sender.addAttachment(path);
-                            Log.d("vietii", path.toString());
+
 
                             sender.sendMail("Code unic de intrare ", "Acest mesaj contine Qr codul necesar pentru a intra in cadrul festivalului. Acest cod nu este transmisibil, iar abaterile vor fi sanctionate comform regulamentului. ",
 
@@ -282,7 +286,10 @@ public class NewEntryActivity extends AppCompatActivity {
     void setinfo() {
 
         next.setEnabled(true);
-        next.setBackgroundColor(getResources().getColor(R.color.button));
+//        next.setBackgroundColor(getResources().getColor(R.color.button));
+        next.setBackgroundDrawable(getResources().getDrawable(R.drawable.mybutton));
+
+
         next.setTextColor(getResources().getColor(R.color.buttontext));
         firstname.setVisibility(View.VISIBLE);
         lastname.setVisibility(View.VISIBLE);
