@@ -271,7 +271,27 @@ public class CheckActivity extends AppCompatActivity {
         myRef.child("problem").setValue("1");
 
     }
-
+void clearinfo(){
+    checkOut.setBackgroundDrawable(getResources().getDrawable(R.drawable.mybuttonnotenable));
+    chechIn.setBackgroundDrawable(getResources().getDrawable(R.drawable.mybuttonnotenable));
+    problem.setBackgroundDrawable(getResources().getDrawable(R.drawable.mybuttonnotenable));
+    chechIn.setEnabled(false);
+    checkOut.setEnabled(false);
+    problem.setEnabled(false);
+    firstName.setVisibility(View.VISIBLE);
+    lastName.setVisibility(View.VISIBLE);
+    age.setVisibility(View.VISIBLE);
+    sex.setVisibility(View.VISIBLE);
+    phone.setVisibility(View.VISIBLE);
+    mail.setVisibility(View.VISIBLE);
+    firstName.setText("");
+    lastName.setText("");
+    age.setText("");
+    sex.setText("");
+    phone.setText("");
+    mail.setText("");
+    imageId.setImageBitmap(null);
+}
 
     void setViews() {
         Button qrCodeScan = (Button) findViewById(R.id.qrCodeScan);
@@ -302,6 +322,7 @@ public class CheckActivity extends AppCompatActivity {
 
         qrCodeScan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                clearinfo();
                 scanBarcode(v);
                 // apeleaza scanBarcode care apeleaza efectic ScannBarcodeActivity, unde se realizeaza scanarea efectiva
             }

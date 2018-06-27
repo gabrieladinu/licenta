@@ -54,17 +54,18 @@ public class NewEntryActivity1 extends AppCompatActivity {
     TextView resultid;
     TextView sexid;
     TextView ageid;
+    TextView noid;
     Button newIdScann;
     ImageView idImage;
     ImageView faceImage;
     private String mCurrentPhotoPath;
     Bitmap editedBitmap;
     String cnp;
-    String sex;
+    String sex = "Repeta scanarea";
     Button sumbit;
     int year = Integer.parseInt(new SimpleDateFormat("yyyy", Locale.getDefault()).format(new Date()));
     String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
-    String varsta;
+    String varsta = " Repeta scanarea ";
     String key1;
     String qrCodegenerated;
 
@@ -152,6 +153,8 @@ public class NewEntryActivity1 extends AppCompatActivity {
             scanFaces(bitmap);
         } catch (Exception e) {
             e.printStackTrace();
+
+
         }
 
 //        idImage.setImageBitmap(bitmap);
@@ -208,12 +211,13 @@ public class NewEntryActivity1 extends AppCompatActivity {
 
             if (faces.size() == 0) {
                 // nu s-a detectat fata
+
 clearinfo();
             } else {
                 setinfo();
             }
         } else {
-
+            noid.setVisibility(View.VISIBLE);
         }
     }
 
@@ -261,6 +265,8 @@ clearinfo();
         resultid.setVisibility(View.VISIBLE);
         idImage.setImageBitmap(null);
         faceImage.setImageBitmap(null);
+        sexid.setVisibility(View.INVISIBLE);
+        ageid.setVisibility(View.INVISIBLE);
     }
 
     private void textInfo(Bitmap bitmap) {
@@ -342,9 +348,11 @@ clearinfo();
             try {
                 setPic();
             } catch (Exception e) {
+
                 e.printStackTrace();
             }
         }
+
 
     }
 
@@ -394,6 +402,7 @@ clearinfo();
         resultid = (TextView) findViewById(R.id.resultid);
         sexid = (TextView) findViewById(R.id.sexid);
         ageid = (TextView) findViewById(R.id.ageid);
+        noid = (TextView) findViewById(R.id.noid);
 
 
         newIdScann = (Button) findViewById(R.id.idscann);

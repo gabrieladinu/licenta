@@ -117,10 +117,23 @@
                 android:visibility="invisible"
                 android:textStyle="bold"/>
 
-
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/noid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="You should rescan the ID Card."
+        android:visibility="invisible"
+        android:textColor="@color/text"
+        android:textSize="20dp"
+        android:textStyle="bold"
+       />
 
 
 </LinearLayout>
+
 
     <Button
         android:id="@+id/submit"
